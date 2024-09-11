@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface CitySearchProps {
   onSearch: (cityInput: string) => void;
@@ -7,6 +7,7 @@ interface CitySearchProps {
 
 const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
   const [cityInput, setCityInput] = useState('');
+  const location = useLocation();
 
   const handleSearch = () => {
     if (cityInput) {
@@ -15,12 +16,18 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch(); // trigger search if Enter is pressed
+    }
+  };
+
   return (
-    <div className="navbar bg-base-200">
-      <div className="flex-1">
+    <div className="navbar bg-base-200 flex-wrap">
+      <div className="flex-1 mr-8 mb-4">
         <a className="btn btn-ghost normal-case text-xl">Weather App</a>
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex-none gap-2 mb-4 ml-4">
         <div className="form-control">
           <input
             type="text"
@@ -28,17 +35,20 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
             className="input input-bordered"
             value={cityInput}
             onChange={(e) => setCityInput(e.target.value)}
+            onKeyDown={handleKeyPress}
           />
         </div>
         <button className="btn btn-primary" onClick={handleSearch}>
           Search
         </button>
+      </div>
+      <div className="flex-none gap-2 mb-4 ml-4">        
         {/* Navigation Links */}
         <div className="btn-group">
-          <Link to="/" className="btn">
+          <Link to="/" className={`btn ${location.pathname === '/' ? 'btn-active' : ''}`}>
             Current Weather
           </Link>
-          <Link to="/forecast" className="btn">
+          <Link to="/forecast" className={`btn ${location.pathname === '/forecast' ? 'btn-active' : ''}`}>
             5-Day Forecast
           </Link>
         </div>

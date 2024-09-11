@@ -14,7 +14,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city, weatherData }) =>
   const weather = weatherData.current;
 
   return (
-    <div className="p-4">
+    <div className="p-4 container mx-auto max-w-5xl">
       <h2 className="card-title">{city} - Current Weather</h2>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">              
