@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface CitySearchProps {
   onSearch: (cityInput: string) => void;
@@ -9,7 +10,6 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
 
   const handleSearch = () => {
     if (cityInput) {
-      console.log('cityInput: ', cityInput);
       onSearch(cityInput);
       setCityInput(''); // Reset after search
     }
@@ -33,6 +33,15 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
         <button className="btn btn-primary" onClick={handleSearch}>
           Search
         </button>
+        {/* Navigation Links */}
+        <div className="btn-group">
+          <Link to="/" className="btn">
+            Current Weather
+          </Link>
+          <Link to="/forecast" className="btn">
+            5-Day Forecast
+          </Link>
+        </div>
       </div>
     </div>
   );
