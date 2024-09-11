@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CitySearch from './components/CitySearch';
 
-function App() {
+const App: React.FC = () => {
+  const [city, setCity] = useState('');
+
+  const handleCitySearch = (searchedCity: string) => {
+    setCity(searchedCity);
+  };
+
   return (
-    <div className="App">Weather App</div>
+      <CitySearch onSearch={handleCitySearch} />
   );
-}
+};
 
 export default App;
