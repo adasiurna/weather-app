@@ -33,7 +33,7 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
           <input
             type="text"
             placeholder="Search City"
-            className="input input-bordered"
+            className="input input-bordered pe-0 md:pe-4"
             value={cityInput}
             onChange={(e) => setCityInput(e.target.value)}
             onKeyDown={handleKeyPress}
@@ -46,7 +46,7 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
       <div className="flex-none gap-2 mb-4 ml-4">        
         {/* Navigation Links */}
         <div className="btn-group">
-          <Link to="/" className={`btn ${location.pathname === '/' ? 'btn-active' : ''}`}>
+          <Link to="/" className={`btn ${location.pathname === '/' ? 'btn-active' : ''} mr-2`}>
             Current Weather
           </Link>
           <Link to="/forecast" className={`btn ${location.pathname === '/forecast' ? 'btn-active' : ''}`}>
