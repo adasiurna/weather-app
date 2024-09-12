@@ -8,14 +8,12 @@ export const fetchCityCoords = async (city: string) => {
   });
   if (!response.ok) throw new Error("City not found");
   const data = await response.json();
-  console.log('city: ', data[0]);
   return data[0]; // Assuming the first match is the correct one
 };
 
 // Fetch weather data for the given lat and lon
 export const fetchWeatherData = async (lat: number, lon: number, exclude: string = '') => {
   const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${WEATHER_API_KEY}&units=metric`);
-  console.log('weatherData: ', response);
   if (!response.ok) throw new Error("Weather data fetch failed");
   return await response.json();
 };
