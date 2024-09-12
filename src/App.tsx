@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CurrentWeather from './pages/CurrentWeather';
 import ForecastWeather from './pages/ForecastWeather';
 import CitySearch from './components/CitySearch';
+import FavCities from './components/FavCities';
 import { fetchCityCoords, fetchWeatherData } from './api/weatherApi';
 
 const App: React.FC = () => {
@@ -47,6 +48,11 @@ const App: React.FC = () => {
     }
   };
 
+  const handleFavCityDelete = (city: string) => {
+    const updatedFavCities = favCities.filter((e) => e !== city );
+    setFavCities(updatedFavCities);
+  }
+
   const addFavCity = () => {
     if (!favCities.includes(cityName)) {
       setFavCities([...favCities, cityName]);
@@ -55,12 +61,15 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <CitySearch favCities={favCities} onSearch={handleCitySearch} />
-      {cityName && !favCities.includes(cityName) && (
-        <button className="btn btn-outline" onClick={addFavCity}>
-          Add <b>{cityName}</b> to favorites
-        </button>
-      )}
+      <CitySearch onSearch={handleCitySearch} />
+      <div className="md:flex">
+        <FavCities onFavCityDelete={handleFavCityDelete} onSearch={handleCitySearch} favCities={favCities}  />
+        {cityName && (
+          <button className={`btn btn-outline m-1 ${favCities.includes(cityName) ? 'btn-disabled':''}`} onClick={addFavCity}>
+            Add <b>{cityName}</b> to favorites
+          </button>
+        )}
+      </div>
       {error ? (
         <p>{error}</p>
       ) : (

@@ -3,10 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 interface CitySearchProps {
   onSearch: (cityInput: string) => void;
-  favCities: string[];
 }
 
-const CitySearch: React.FC<CitySearchProps> = ({ onSearch, favCities }) => {
+const CitySearch: React.FC<CitySearchProps> = ({ onSearch }) => {
   const [cityInput, setCityInput] = useState('');
   const location = useLocation();
 
@@ -16,10 +15,6 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch, favCities }) => {
       setCityInput(''); // Reset after search
     }
   };
-
-  const handleFavCityClick = (city: string) => {
-    onSearch(city);
-  }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -59,41 +54,6 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSearch, favCities }) => {
           </Link>
         </div>
       </div>
-    </div>
-    <div>
-      {
-        favCities.map( (city: string, index: number) => (
-          <button
-            className="btn btn-accent m-1"
-            onClick={() => handleFavCityClick(city)}
-          >
-            <span>{city}</span>
-            {/* "X" icon with its own click handler */}
-            <span
-              className="ml-4 p-1 text-white hover:text-red-600 cursor-pointer transition duration-150 ease-in-out"
-              onClick={(e) => {
-                e.stopPropagation(); // Prevents triggering the button's onClick event
-                // onDeleteClick();
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </span>
-          </button>
-        ))
-      }
     </div>
     </>
   );
