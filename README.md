@@ -2,6 +2,58 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisites
+
+Before you can run this application locally, you need to have the following tools installed on your machine:
+
+### Required Toolset
+
+- **Node.js** (version 14.x or newer)  
+  Download and install it from the [official Node.js website](https://nodejs.org/).
+
+- **Yarn** (a package manager for JavaScript)  
+  Install it globally using npm (comes with Node.js):  
+  ```bash
+  npm install -g yarn
+  ```
+
+- **Git** (optional, for version control)  
+  Download and install it from the [official Git website](https://git-scm.com/).
+
+## Running the Application Locally
+
+Follow these steps to set up and run the project on your local machine:
+
+### 1. Clone the repository
+
+If you haven't cloned the project yet, use the following command to clone it from the GitHub repository:
+```bash
+git clone https://github.com/your-username/your-repository-name.git
+```
+
+### 2. Navigate to the project directory
+
+Move into the project's folder:
+```bash
+cd your-repository-name
+```
+
+### 3. Install dependencies
+
+To install all the required packages, run the following command:
+```bash
+yarn install
+```
+
+### 4. Start the development server
+
+Once the dependencies are installed, you can start the app in development mode:
+```bash
+yarn start
+```
+
+This will launch the app and automatically open [http://localhost:3000](http://localhost:3000) in your default browser. The app will reload if you make any changes to the source code, and you'll see errors or warnings in the browser console or terminal.
+
 ## Available Scripts
 
 In the project directory, you can run:
