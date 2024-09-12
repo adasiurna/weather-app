@@ -29,7 +29,7 @@ const ForecastWeather: React.FC<ForecastWeatherProps> = ({ city, weatherData }) 
             <h2 className="card-title">{formatDate(day.dt)}</h2>
             <div className="flex">
               <div className="block">
-                <p>Temperature: {day.temp.day}°C</p>
+                <p>Temperature: {Math.floor(day.temp.day)}°C / {Math.floor(day.temp.night)}°C</p>
                 <p>Humidity: {day.humidity} %</p>
               </div>
               <div className="block ml-6">

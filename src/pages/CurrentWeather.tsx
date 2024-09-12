@@ -18,7 +18,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city, weatherData }) =>
       <h2 className="card-title">{city} - Current Weather</h2>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">              
-          <p>Temperature: {weather.temp}°C</p>
+          <p>Temperature: {Math.floor(weather.temp)}°C</p>
           <p>Humidity: {weather.humidity} %</p>
           <p>Wind speed: {weather.wind_speed} m/s</p>
           <p>Weather: {weather.weather[0].description}</p>
